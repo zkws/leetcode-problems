@@ -83,18 +83,7 @@ Both statements return records 2, 3, 4 (skip 1, take 3)
 - **Single-parameter LIMIT**: `LIMIT n` = Return first n rows (equivalent to `LIMIT 0,n`)
 - **LIMIT-OFFSET syntax**: Clearer syntax for pagination
 
-## Common Use Cases
-```sql
--- Get top 3 records
-SELECT * FROM articles ORDER BY views DESC LIMIT 3;
-
--- Pagination example (3rd page of 10 items)
-SELECT * FROM users 
-LIMIT 10 OFFSET 20;  -- Skips first 20 records
-```
-
 ## Important Notes
 1. Always use `ORDER BY` with `LIMIT/OFFSET` for predictable results
-2. `DISTINCT` is crucial when dealing with potential duplicate salaries
+2. `DISTINCT` is crucial when dealing with potential duplicate records
 3. Handle null cases explicitly using `CASE` or subquery wrappers
-```
