@@ -87,3 +87,20 @@ Both statements return records 2, 3, 4 (skip 1, take 3)
 1. Always use `ORDER BY` with `LIMIT/OFFSET` for predictable results
 2. `DISTINCT` is crucial when dealing with potential duplicate records
 3. Handle null cases explicitly using `CASE` or subquery wrappers
+
+# The Nth highest salary
+
+```sql
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+DECLARE offsetN INT;
+SET offsetN = N-1;
+  RETURN (
+      # Write your MySQL query statement below.
+    SELECT DISTINCT Salary 
+    FROM Employee 
+    ORDER BY salary DESC 
+    LIMIT 1 OFFSET offsetN
+  );
+END
+```
